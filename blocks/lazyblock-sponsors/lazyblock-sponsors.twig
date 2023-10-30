@@ -1,0 +1,43 @@
+<section
+	x-data="{ show: false }">
+	{# todo give option to full bleed sponsors grid #}
+	{% if attributes.full_width %}
+		<div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-16 ">
+		{% else %}
+			<div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl">
+			{% endif %}
+			{% if attributes.title %}
+				<h2 class="sb-heading text-center mb-2">{{attributes.title}}</h2>
+			{% endif %}
+			{% if attributes.subtitle %}
+				<p class="text-xl text-center mx-auto max-w-2xl mb-6 pb-6">{{attributes.subtitle}}</p>
+			{% endif %}
+			<div class="flex flex-wrap gap-0.5 gap-y-12 justify-center duration-500 delay-300" :class="show || 'opacity-0'" x-intersect="show = true">
+				{% if attributes.tier != 'all' %}
+					{% for sponsor in sponsors | filter((sponsor) => sponsor.tier == attributes.tier)%}
+						{% if sponsor.url %}
+							<a href="{{sponsor.url.url}}" target="_blank" class="flex justify-center w-[45%] md:w-[16.5%] px-8">
+								<img class="max-w-full h-auto object-contain" src="{{Image(sponsor.logo).src}}" alt="{{sponsor.title}}">
+							</a>
+						{% else %}
+							<div class="flex justify-center col-span-1 px-8 w-[45%] md:w-[16.5%]">
+								<img class="max-w-full h-auto object-contain" src="{{Image(sponsor.logo).src}}" alt="{{sponsor.title}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% else  %}
+					{% for sponsor in sponsors %}
+						{% if sponsor.url %}
+							<a href="{{sponsor.url.url}}" target="_blank" class="flex justify-center w-[45%] md:w-[16.5%] px-8">
+								<img class="max-w-full h-auto object-contain" src="{{Image(sponsor.logo).src}}" alt="{{sponsor.title}}">
+							</a>
+						{% else %}
+							<div class="flex justify-center col-span-1 px-8 w-[45%] md:w-[16.5%]">
+								<img class="max-w-full h-auto object-contain" src="{{Image(sponsor.logo).src}}" alt="{{sponsor.title}}">
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</section>

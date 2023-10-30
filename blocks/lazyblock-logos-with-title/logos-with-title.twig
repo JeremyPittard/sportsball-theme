@@ -1,0 +1,22 @@
+<section x-data="{ show: false }">
+	<div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl">
+		<div class="text-center">
+			<h3 class="text-lg font-medium leading-6 text-brand-primary uppercase within 500 fortune companies duration-500 delay-300" :class="show || 'opacity-0'">
+				{{logos.title}}
+			</h3>
+		</div>
+		<div class="grid grid-cols-2 gap-0.5 md:grid-cols-6 pt-6 duration-500 delay-300" :class="show || 'opacity-0'" x-intersect="show = true">
+			{% for logo in logos.logos %}
+				{% if logo.link %}
+					<a href="{{logo.link}}" target="_blank" class="flex justify-center col-span-1 px-8">
+						<img class="max-h-12" src="{{logo.logo.url}}" alt="{{logo.logo.alt}}">
+					</a>
+				{% else %}
+					<div class="flex justify-center col-span-1 px-8">
+						<img class="max-h-12" src="{{logo.logo.url}}" alt="{{logo.logo.alt}}">
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>

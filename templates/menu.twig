@@ -1,0 +1,105 @@
+<div class="w-full bg-brand-secondary">
+	<div class="w-full mx-auto bg-brand-secondary 2xl:max-w-screen-2xl">
+		<div x-data="{ open: false }" class="relative flex flex-col w-full p-5 mx-auto bg-brand-secondary xl:items-center xl:justify-between xl:flex-row xl:px-6 xl:px-8">
+			<div class="flex flex-row items-center justify-between xl:justify-start">
+				{% if options.logo %}
+					<a class="text-lg tracking-tight text-brand-primary uppercase focus:outline-1 focus:ring ring-brand-primary-50 xl:text-2xl" href="{{site.url}}">
+						<span class="xl:text-lg uppecase focus:ring-0">
+							<img src="{{options.logo.url}}" alt="{{options.club_name}} Logo" class="w-12"/>
+						</span>
+					</a>
+				{% endif %}
+				<button @click="open = !open" class="inline-flex items-center justify-center p-2 text-brand-primary hover:text-brand-primary-700 focus:outline-1 focus:text-brand-primary-700 xl:hidden">
+					<svg class="w-6 h-6" stroke="currentColor" fill="none" viewbox="0 0 24 24">
+						<path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+						<path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+			<nav :class="{'flex': open, 'hidden': !open}" class="flex-col items-center flex-grow hidden xl:pb-0 xl:flex xl:justify-end xl:flex-row duration-500">
+				{% if nav_menu %}
+					{% for item in items %}
+						{% if item.children %}
+							<div @click.away="open = false" class="relative {{loop.index == 1 ? 'xl:ml-auto' : ''}}" x-data="{ open: false }">
+								<button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm text-left text-brand-primary xl:w-auto xl:inline xl:mt-0 hover:text-brand-primary-900 focus:outline-1 focus:shadow-outline">
+									<span>
+										{{item.title}}
+									</span>
+									<svg fill="currentColor" viewbox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform xl:-mt-1 rotate-0">
+										<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+									</svg>
+								</button>
+								<div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute z-10 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0" style="display: none;">
+									<div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+										<div class="relative grid gap-6 px-5 py-6 bg-brand-secondary sm:gap-8 sm:p-8 mx-auto">
+											{% for child in item.children %}
+												<a href="{{child.url}}" target="{{child.target}}" class="inline-flex items-start p-3 -m-3 transition duration-150 ease-in-out rounded-xl hover:bg-brand-primary-100">
+													<div class="ml-4">
+														<p class="text-base font-medium text-brand-primary">
+															{{child.title}}
+														</p>
+														<p class="mt-1 text-sm text-brand-primary-600">
+															{{child.post_content}}
+														</p>
+													</div>
+												</a>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+							</div>
+						{% else %}
+							<a class="px-2 py-2 text-sm text-brand-primary xl:px-3 hover:text-brand-primary-600" href="{{item.url}}" target="{{item.target}}">
+								{{item.title}}
+							</a>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+
+				<div class="block xl:flex items-center list-none xl:ml-auto">
+					{% if options.registration_link  and not options.registration_link_2 %}
+						{% set rego_link = options.registration_link %}
+						<a href="{{rego_link.url}}" target="{{rego_link.target}}" class="sb-button">
+							{{rego_link.title}}
+						</a>
+					{% endif %}
+					{% if options.registration_link_2 and not options.registration_link %}
+						{% set rego_link = options.registration_link_2 %}
+						<a href="{{rego_link.url}}" target="{{rego_link.target}}" class="sb-button">
+							{{rego_link.title}}
+						</a>
+					{% endif %}
+					{% if options.registration_link_2 and options.registration_link %}
+						{% set rego_link = options.registration_link %}
+						{% set rego_link_2 = options.registration_link_2 %}
+						<div @click.away="open = false" class="relative" x-data="{ open: false }">
+							<button @click="open = !open" class="sb-button">
+								<span>
+									Register Now!
+								</span>
+								<svg fill="currentColor" viewbox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform xl:-mt-1 rotate-0">
+									<path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+								</svg>
+							</button>
+							<div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute z-10 w-screen max-w-xs px-2 mt-3 transform -translate-x-1/2 left-1/2 sm:px-0" style="display: none;">
+								<div class="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+									<div class="relative grid gap-6 px-2 py-3 bg-brand-secondary sm:gap-8 sm:p-4 mx-auto">
+										<div class="relative grid gap-6 px-5 py-6 bg-brand-secondary sm:gap-8 sm:p-8 mx-auto">
+											<a href="{{rego_link.url}}" target="{{rego_link.target}}" class="sb-button">
+												{{rego_link.title}}
+											</a>
+											<a href="{{rego_link_2.url}}" target="{{rego_link_2.target}}" class="sb-button">
+												{{rego_link_2.title}}
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					{% endif %}
+				</div>
+			</nav>
+		</nav>
+	</div>
+</div></div>

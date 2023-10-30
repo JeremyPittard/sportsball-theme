@@ -1,0 +1,32 @@
+<section class="relative flex items-center w-full bg-white" x-data="{ show: false }">
+	<div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-16 max-w-7xl">
+		<div class="relative flex-col items-start m-auto align-middle">
+			<div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-24">
+				<div class="relative items-center gap-12 m-auto lg:inline-flex duration-500 delay-300" :class="show || 'opacity-0'">
+					<div class="max-w-xl text-center lg:text-left">
+						<div x-intersect="show = true">
+							<h2 class="sb-heading" x-intersect.margin.-150px="show = true">
+								{{feature.title}}
+							</h2>
+							<p class="max-w-xl mt-4 text-base tracking-tight text-gray-600">
+								{{feature.text}}
+							</p>
+						</div>
+						<div class="flex justify-center gap-3 mt-10 lg:justify-start">
+							{% if feature.link %}
+								<a class="sb-button" href="{{feature.link}}">
+									<span>
+										{{feature['link-label']}}
+									</span>
+								</a>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="order-first flex w-full mt-12 aspect-square lg:mt-0 lg:order-first relative items-center duration-500" :class="show || 'opacity-0'">
+					<img class="aspect-square object-cover object-center w-3/4 mx-auto bg-gray-300 lg:ml-auto shadow-solid-bottom-left shadow-brand-primary" alt="#" src="{{feature.image.url ?? 'https://placehold.co/400'}}">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

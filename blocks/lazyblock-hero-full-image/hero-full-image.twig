@@ -1,0 +1,14 @@
+<div class="w-full bg-center bg-cover h-[38rem]" style="background-image: url('{{hero.image.url}}}}');">
+	<div class="flex items-center justify-center w-full h-full bg-gray-900/40">
+		<div class="text-center">
+			<h1 class="text-3xl font-semibold text-white lg:text-4xl mb-4">{{hero.title}}</h1>
+			{% if hero.link %}
+				<a href="{{hero.link}}" class="sb-button inline-block mt-4">
+					{% if hero['link-label'] %}
+						{{hero['link-label']}}
+					{% endif %}
+				</a>
+			{% endif %}
+		</div>
+	</div>
+</div>

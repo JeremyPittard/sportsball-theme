@@ -1,0 +1,33 @@
+<section x-data="{ show: false }">
+	<div class="items-center px-8 py-12 mx-auto 2xl:max-w-7xl lg:px-16 md:px-12 xl:px-36 lg:py-32 w-xl">
+		<div class="lg:items-center lg:gap-8 lg:grid lg:grid-cols-2">
+			<div>
+				<div class="max-w-xl lg:p-10 duration-500 delay-300" x-intersect.margin.-150px="show = true" :class="show || 'opacity-0'">
+					<div>
+						<h2 class="sb-heading">
+							{{logos.title}}
+						</h2>
+						{% if logos.description %}
+							<p class="max-w-xl mt-4 text-lg tracking-tight text-gray-600">
+								{{logos.description}}
+							</p>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="grid grid-cols-2 gap-0.5 lg:grid-cols-2 lg:mt-0 md:grid-cols-3 mt-8 duration-500 delay-500" :class="show || 'opacity-0'">
+				{% for logo in logos.logos %}
+					{% if logo.link %}
+						<a href="{{logo.link}}" target="_blank" class="flex justify-center col-span-1 px-8 py-8 bg-gray-5">
+							<img class="max-h-12" src="{{logo.logo.url}}" alt="{{logo.logo.alt}}">
+						</a>
+					{% else %}
+						<div class="flex justify-center col-span-1 px-8 py-8 bg-gray-5">
+							<img class="max-h-12" src="{{logo.logo.url}}" alt="{{logo.logo.alt}}">
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

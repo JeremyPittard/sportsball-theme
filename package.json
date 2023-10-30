@@ -1,0 +1,19 @@
+{
+  "name": "fortythree-theme",
+  "version": "0.4.3",
+  "description": "theme for sports clubs to get up and running",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "npx tailwindcss -i ./tailwind.css -o ./style.css --watch",
+    "build": "npx tailwindcss -i ./tailwind.css -o ./style.css --minify",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  }
+}

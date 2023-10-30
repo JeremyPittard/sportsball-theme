@@ -1,0 +1,17 @@
+<section x-data="{ show: false }">
+	<div class="relative items-center w-full px-5 mx-auto md:px-12 lg:px-16 max-w-7xl py-14">
+		<div class="grid grid-cols-2 gap-0.5 md:grid-cols-3 duration-500 delay-300" :class="show || 'opacity-0'" x-intersect="show = true">
+			{% for logo in logos %}
+				{% if link %}
+					<a href="{{logo.link}}" target="_blank" class="flex justify-center col-span-1 p-8">
+						<img class="max-h-12" src="{{logo.logo.url}}" alt="{{logo.logo.alt}}">
+					</a>
+				{% else %}
+					<div class="flex justify-center col-span-1 p-8">
+						<img class="max-h-12" src="{{logo.logo.url}}" alt="{{logo.logo.alt}}">
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>

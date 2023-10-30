@@ -1,0 +1,81 @@
+/*
+ * Theme Name: Sportsball
+ * Description: Theme For Sports Clubs
+ * Author: Jeremy Pittard
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS */
+:root {
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+html {
+  font-size: 18px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+.transition-fade {
+  transition: 300ms;
+  opacity: 1;
+  transform: none;
+}
+
+html.is-animating .transition-fade {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+/* custom classes */
+@layer components {
+  .sb-button {
+    @apply w-full block xl:flex px-5 py-2 my-2 xl:my-0 mx-2 text-sm font-medium text-brand-secondary capitalize transition-colors duration-300 transform bg-brand-primary rounded-md xl:w-auto hover:bg-brand-primary-400 focus:outline-1 focus:bg-brand-primary-600 max-w-max;
+  }
+
+  .sb-heading {
+    @apply text-2xl font-medium tracking-tight text-brand-primary sm:text-4xl;
+  }
+}
+
+.swup-progress-bar {
+  height: 4px;
+  @apply bg-brand-primary;
+}
+
+table:not(.wp-list-table):not(.form-table) {
+  @apply min-w-full divide-y-2 divide-gray-200 bg-white text-sm;
+}
+
+th:not(.wp-list-table):not(.form-table) {
+  @apply whitespace-nowrap px-4 py-2 font-medium text-brand-primary;
+}
+
+td:not(.wp-list-table):not(.form-table) {
+  @apply whitespace-nowrap px-4 py-2 font-medium text-brand-primary;
+}
+
+tr:nth-last-of-type(2n):not(.iedit):not(.form-table tr):not(.row-title) {
+  @apply bg-brand-primary-100;
+}
+
+/* support for ssl S-2238771 */

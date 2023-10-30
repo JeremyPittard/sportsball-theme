@@ -1,0 +1,23 @@
+<section x-data="{ show: false }">
+	<div class="items-center w-full px-5 py-24 mx-auto md:px-12 lg:px-16 max-w-7xl">
+		<ul role="list" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-12 duration-500 delay-300" :class="show || 'opacity-0'" x-intersect="show = true">
+			{% for p in people.people %}
+				<li>
+					<div class="flex flex-col items-center gap-4 text-center">
+						<img class="object-cover w-16 h-16 rounded-full lg:h-20 lg:w-20" src="{{p.image.url}}" alt="#"/>
+						<div class="space-y-1">
+							<h3 class="text-lg font-medium leading-6 text-brand-primary">
+								{{p.name}}
+							</h3>
+							{% if p.position %}
+								<p class="text-base text-gray-500">
+									{{p.position}}
+								</p>
+							{% endif %}
+						</div>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</section>
