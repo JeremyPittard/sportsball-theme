@@ -12,6 +12,9 @@
 :root {
   font-family: "Inter", sans-serif;
 }
+::selection {
+  @apply bg-brand-primary-100;
+}
 
 @supports (font-variation-settings: normal) {
   :root {
@@ -19,19 +22,19 @@
   }
 }
 
-html {
+html:not(.wp-toolbar) {
   font-size: 18px;
 }
 
-h1 {
+h1:not(.wp-toobar h1) {
   font-size: 36px;
 }
 
-h2 {
+h2:not(.wp-toobar h2) {
   font-size: 28px;
 }
 
-h3 {
+h3:not(.wp-toobar h3) {
   font-size: 24px;
 }
 
@@ -46,6 +49,14 @@ html.is-animating .transition-fade {
   transform: translateY(5px);
 }
 
+a:not(.wp-admin a):not(.sb-button):hover,
+button:not(.wp-admin button):not(.sb-button):hover {
+  @apply bg-brand-primary-100 rounded-md;
+}
+
+a:not(.wp-admin a):not(.sb-button):not(nav a) {
+  text-decoration: underline;
+}
 /* custom classes */
 @layer components {
   .sb-button {
@@ -62,19 +73,21 @@ html.is-animating .transition-fade {
   @apply bg-brand-primary;
 }
 
-table:not(.wp-list-table):not(.form-table) {
+table:not(.wp-list-table):not(.form-table):not(.wp-admin table) {
   @apply min-w-full divide-y-2 divide-gray-200 bg-white text-sm;
 }
 
-th:not(.wp-list-table):not(.form-table) {
+th:not(.wp-list-table):not(.form-table):not(.wp-admin th) {
   @apply whitespace-nowrap px-4 py-2 font-medium text-brand-primary;
 }
 
-td:not(.wp-list-table):not(.form-table) {
+td:not(.wp-list-table):not(.form-table):not(.wp-admin td) {
   @apply whitespace-nowrap px-4 py-2 font-medium text-brand-primary;
 }
 
-tr:nth-last-of-type(2n):not(.iedit):not(.form-table tr):not(.row-title) {
+tr:nth-last-of-type(2n):not(.iedit):not(.form-table tr):not(.row-title):not(
+    .wp-admin tr
+  ) {
   @apply bg-brand-primary-100;
 }
 

@@ -9,7 +9,7 @@
 						</span>
 					</a>
 				{% endif %}
-				<button @click="open = !open" class="inline-flex items-center justify-center p-2 text-brand-primary hover:text-brand-primary-700 focus:outline-1 focus:text-brand-primary-700 xl:hidden">
+				<button @click="open = !open" class="inline-flex items-center justify-center p-2 text-brand-primary hover:text-brand-primary-400 focus:outline-1 focus:text-brand-primary-700 xl:hidden">
 					<svg class="w-6 h-6" stroke="currentColor" fill="none" viewbox="0 0 24 24">
 						<path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
 						<path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -21,7 +21,7 @@
 					{% for item in items %}
 						{% if item.children %}
 							<div @click.away="open = false" class="relative {{loop.index == 1 ? 'xl:ml-auto' : ''}}" x-data="{ open: false }">
-								<button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm text-left text-brand-primary xl:w-auto xl:inline xl:mt-0 hover:text-brand-primary-900 focus:outline-1 focus:shadow-outline">
+								<button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm text-left text-brand-primary xl:w-auto xl:inline xl:mt-0 hover:text-brand-primary-400 focus:outline-1 focus:shadow-outline">
 									<span>
 										{{item.title}}
 									</span>

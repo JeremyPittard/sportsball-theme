@@ -6,26 +6,33 @@
 		{% if attributes.subtitle %}
 			<p class="text-xl mx-auto max-w-2xl text-center">{{attributes.subtitle}}</p>
 		{% endif %}
-		<div class="grid grid-cols-1 gap-6 py-12 md:grid-cols-3" x-intersect.margin="show = true">
-			{% for event in events %}
-				<figure class="duration-500 delay-300" :class="show || 'opacity-0'">
-					<img class="w-full bg-gray-200 aspect-square object-cover object-center" src="{{Image(event.image).src}}" alt="#" width="1310" height="873">
-					<h3 class="mt-5 text-lg font-medium leading-6 text-brand-primary">
-						{{event.title}}
-					</h3>
-					<p class="mt-3 text-base text-gray-500">
-						{{event.date}}
-						{{event.time}}
-					</p>
-					<div class="flex gap-3 mt-10 justify-left">
-						<a class="sb-button" href="{{link}}">
-							<span>
-								More
-							</span>
-						</a>
-					</div>
-				</figure>
-			{% endfor %}
-		</div>
+		{% if events %}
+			<div class="grid grid-cols-1 gap-6 py-12 md:grid-cols-3" x-intersect.margin="show = true">
+				{% for event in events %}
+					<figure class="duration-500 delay-300" :class="show || 'opacity-0'">
+						<img class="w-full bg-gray-200 aspect-square object-cover object-center" src="{{Image(event.image).src}}" alt="#" width="1310" height="873">
+						<h3 class="mt-5 text-lg font-medium leading-6 text-brand-primary">
+							{{event.title}}
+						</h3>
+						<p class="mt-3 text-base text-gray-500">
+							{{event.date}}
+							{{event.time}}
+						</p>
+						<div class="flex gap-3 mt-10 justify-left">
+							<a class="sb-button" href="{{link}}">
+								<span>
+									More
+								</span>
+							</a>
+						</div>
+					</figure>
+				{% endfor %}
+			</div>
+		{% endif %}
+		{% if not events %}
+			<div class="py-12">
+				<p class="text-xl mx-auto max-w-2xl text-center">We're having a bit of a queit spell, but don't worry, we're working on some great events for the future.</p>
+			</div>
+		{% endif %}
 	</div>
 </section>
