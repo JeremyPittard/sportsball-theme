@@ -1,0 +1,109 @@
+<section x-data="{ show: false }">
+	{% if attributes.title %}
+		<h2 class="sb-heading text-center mb-2">{{attributes.title}}</h2>
+	{% endif %}
+	{% if attributes.subtitle %}
+		<p class="text-xl text-center mx-auto max-w-2xl ">{{attributes.subtitle}}</p>
+	{% endif %}
+	<div class="items-center w-full px-5 py-24 mx-auto md:px-12 lg:px-16 max-w-7xl">
+		<ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8" :class="show || 'opacity-0'" x-intersect="show = true">
+			{% if attributes.tier != '999' %}
+				{% for sponsor in sponsors| filter((sponsor) => sponsor.tier == attributes.tier) %}
+					<li>
+						<div class="space-y-4 flex-col">
+							<div class="h-24">
+								<img class="object-fit max-h-20" src="{{Image(sponsor.logo).src}}" alt="">
+							</div>
+							<div class="flex flex-col items-start justify-between w-full">
+								<div class="space-y-1">
+									<h3 class="text-lg font-medium leading-6 text-black">
+										{{sponsor.title}}
+									</h3>
+									{% if sponsor.description %}
+										<p class="text-base text-gray-500">
+											{{sponsor.description}}
+										</p>
+									{% endif %}
+								</div>
+								<div>
+									<ul role="list" class="flex space-x-3 mt-5">
+										{% if sponsor.url %}
+											<li>
+												<a href="{{sponsor.url.url}}" rel="noopener noreferrer" target="_blank" class="p-2 block">
+													<img src="{{ theme.link }}/img/www.png" alt="link to our {{sponsor.name}} page" class="w-6"/>
+												</a>
+											</li>
+										{% endif %}
+										{% if sponsor.facebook_link %}
+											<li>
+												<a href="{{sponsor.facebook_link}}" rel="noopener noreferrer" target="_blank" class="p-2 block">
+													<img src="{{ theme.link }}/img/fb.png" alt="link to our {{sponsor.name}} facebook page" class="w-6"/>
+												</a>
+											</li>
+										{% endif %}
+										{% if sponsor.instagram_link %}
+											<li>
+												<a href="{{sponsor.instagram_link}}" rel="noopener noreferrer" target="_blank" class="p-2 block">
+													<img src="{{ theme.link }}/img/insta.png" alt="link to our {{sponsor.name}} instagram page" class="w-6"/>
+												</a>
+											</li>
+										{% endif %}
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+			{% else %}
+				{% for sponsor in sponsors %}
+					<li>
+						<div class="space-y-4 flex-col">
+							<div class="h-24">
+								<img class="object-fit max-h-20" src="{{Image(sponsor.logo).src}}" alt="">
+							</div>
+							<div class="flex flex-col items-start justify-between w-full">
+								<div class="space-y-1">
+									<h3 class="text-lg font-medium leading-6 text-black">
+										{{sponsor.title}}
+									</h3>
+									{% if sponsor.description %}
+										<p class="text-base text-gray-500">
+											{{sponsor.description}}
+										</p>
+									{% endif %}
+								</div>
+								<div>
+									<ul role="list" class="flex space-x-3 mt-5">
+										{% if sponsor.url %}
+											<li>
+												<a href="{{sponsor.url.url}}" rel="noopener noreferrer" target="_blank" class="p-2 block">
+													<img src="{{ theme.link }}/img/www.png" alt="link to our {{sponsor.name}} page" class="w-6"/>
+												</a>
+											</li>
+										{% endif %}
+										{% if sponsor.facebook_link %}
+											<li>
+												<a href="{{sponsor.facebook_link}}" rel="noopener noreferrer" target="_blank" class="p-2 block">
+													<img src="{{ theme.link }}/img/fb.png" alt="link to our {{sponsor.name}} facebook page" class="w-6"/>
+												</a>
+											</li>
+										{% endif %}
+										{% if sponsor.instagram_link %}
+											<li>
+												<a href="{{sponsor.instagram_link}}" rel="noopener noreferrer" target="_blank" class="p-2 block">
+													<img src="{{ theme.link }}/img/insta.png" alt="link to our {{sponsor.name}} instagram page" class="w-6"/>
+												</a>
+											</li>
+										{% endif %}
+
+									</ul>
+								</div>
+							</div>
+						</div>
+					</li>
+				{% endfor %}
+			{% endif %}
+		</ul>
+	</div>
+</section>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The template for displaying Sponsors block (Not Found)
+ * The template for displaying Sponsors with description block
  *
  * Methods for TimberHelper can be found in the /functions sub-directory
  *
@@ -31,8 +31,7 @@ if (!function_exists('custom_post_sort')) {
 
 usort($query, 'custom_post_sort');
 
-
 $context = Timber::context();
 $context['sponsors'] = $query;
 $context['attributes'] = $attributes;
-Timber::render('lazyblock-sponsors.twig', $context);
+Timber::render('lazyblock-sponsors-description.twig', $context);
