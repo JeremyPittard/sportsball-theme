@@ -11,4 +11,5 @@
  */
 $context = Timber::context();
 $context['logos'] = $attributes['logos'];
+$context['attributes'] = $attributes;
 Timber::render('logos.twig', $context);

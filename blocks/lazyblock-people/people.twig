@@ -1,5 +1,5 @@
 <section x-data="{ show: false }">
-	<div class="items-center w-full px-5 py-24 mx-auto md:px-12 lg:px-16 max-w-7xl">
+	<div class="items-center w-full px-5 py-12 lg:py-24 mx-auto md:px-12 lg:px-16 max-w-7xl">
 		<ul role="list" class="sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-12 duration-500 delay-300" :class="show || 'opacity-0'" x-intersect="show = true">
 			{% for p in people.people %}
 				<li>

@@ -1,6 +1,9 @@
-{% if section_title.title %}
-	<h2 class="sb-heading text-center mt-6">{{section_title.title}}</h2>
-{% endif %}
-{% if section_title.subtitle %}
-	<p class="text-xl text-center mx-auto max-w-2xl mb-2 pb-2">{{section_title.subtitle}}</p>
-{% endif %}
+<div class="px-4 pt-12 lg:pt-24 -mb-34">
+
+	{% if section_title.title %}
+		<h2 class="sb-heading text-center mt-6">{{section_title.title}}</h2>
+	{% endif %}
+	{% if section_title.subtitle %}
+		<p class="text-xl text-center mx-auto max-w-2xl">{{section_title.subtitle}}</p>
+	{% endif %}
+</div>

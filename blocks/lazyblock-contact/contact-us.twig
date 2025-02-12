@@ -1,5 +1,5 @@
-<section class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl" x-data="{ show: false }">
-	<div class="container px-6 py-12 mx-auto">
+<section class="relative items-center w-full px-5 py-12 lg:py-24 mx-auto md:px-12 lg:px-20 max-w-7xl" x-data="{ show: false }">
+	<div class="container px-6 mx-auto">
 		<div class="duration-500 delay-100" :class="show || 'opacity-0'">
 			<p class="font-medium text-brand-primary">{{contact.heading}}</p>
 			<h1 class="mt-2 text-2xl font-semibold text-brand-primary md:text-3xl">{{contact.title}}</h1>
@@ -57,7 +57,7 @@
 							{{contact['phone-caption']}}
 						{% endif %}
 					</p>
-					<a href="tel:{{contact['phone-number']}}" class="mt-2 text-brand-400">{{contact['phone-number']}}</p>
+					<a href="tel:{{contact['phone-number']}}" class="mt-2 text-brand-400">{{contact['phone-number']}}</a>
 				</div>
 			{% endif %}
 		</div>

@@ -1,14 +1,14 @@
 {% set currentDate = "now"|date('Y-m-d') %}
 <section class="flex items-center w-full bg-white" x-data="{ show: false }">
-	<div class="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
+	<div class="relative items-center w-full px-5 py-12 lg:py-24 mx-auto md:px-12 lg:px-20 max-w-7xl">
 		{% if attributes.title %}
-			<h2 class="sb-heading text-center mb-2">{{attributes.title}}</h2>
+			<h2 class="sb-heading text-center">{{attributes.title}}</h2>
 		{% endif %}
 		{% if attributes.subtitle %}
 			<p class="text-xl mx-auto max-w-2xl text-center">{{attributes.subtitle}}</p>
 		{% endif %}
 		{% if events %}
-			<div class="grid grid-cols-1 gap-6 py-12 md:grid-cols-3" x-intersect.margin="show = true">
+			<div class="grid grid-cols-1 gap-6 pt-8 md:grid-cols-3" x-intersect.margin="show = true">
 				{% for event in events %}
 					{% if loop.index <= attributes.events_to_show and attributes.events_to_show %}
 						{% set eventDate = event.date |date('Y-m-d') %}
@@ -37,7 +37,7 @@
 			</div>
 		{% endif %}
 		{% if not events %}
-			<div class="py-12">
+			<div>
 				<p class="text-xl mx-auto max-w-2xl text-center">We're having a bit of a queit spell, but don't worry, we're working on some great events for the future.</p>
 			</div>
 		{% endif %}

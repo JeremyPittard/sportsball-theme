@@ -248,7 +248,7 @@ function disable_emojis_tinymce($plugins)
 function load_js()
 {
 	//page transitions
-	wp_register_script('swup', 'https://unpkg.com/swup@3', false);
+	wp_register_script('swup', 'https://unpkg.com/swup@4', false);
 	wp_enqueue_script('swup');
 	//for scroll animations
 	wp_register_script('alpineintersect', 'https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js', false);
@@ -290,11 +290,11 @@ add_filter('render_block', 'wrap_table_block', 10, 2);
 function wrap_table_block($block_content, $block)
 {
 	if ('core/paragraph' === $block['blockName']) {
-		$block_content = '<div class="max-w-xl mx-auto px-4 py-8 duration-500 delay-300">' . $block_content . '</div>';
+		$block_content = '<div class="max-w-xl mx-auto px-4 py-12 lg:py-24 duration-500 delay-300">' . $block_content . '</div>';
 	}
 
 	if ('tadv/classic-paragraph' === $block['blockName']) {
-		$block_content = '<div class="max-w-xl mx-auto px-4 py-8 duration-500 delay-300">' . $block_content . '</div>';
+		$block_content = '<div class="max-w-xl mx-auto px-4 py-12 lg:py-24 duration-500 delay-300">' . $block_content . '</div>';
 	}
 
 	return $block_content;
